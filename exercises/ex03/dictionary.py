@@ -28,21 +28,22 @@ def count(list: list[str]) -> dict[str, int]:
 
 
 def favorite_color(colors: dict[str, str]) -> str:
-    """input dict of name with fav colors, returns string of most common color"""
-    max: int = 0
+    """Input dict of names with favorite colors, returns the most common color."""
+    max_count: int = 0
     counter: dict[str, int] = {}
     most_frequent: str = ""
+
     for name in colors:
-        count: int = 0
-        if colors[name] in colors.values() and colors[name] not in counter:
-            count += 1
-        if colors[name] in counter:
-            count = counter[colors[name]] + 1
-        counter[colors[name]] = count
+        color = colors[name]
+        if color not in counter:
+            counter[color] = 0
+        counter[color] += 1
+
     for color in counter:
-        if counter[color] > max:
-            max = counter[color]
+        if counter[color] > max_count:
+            max_count = counter[color]
             most_frequent = color
+
     return most_frequent
 
 

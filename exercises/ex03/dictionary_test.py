@@ -2,11 +2,10 @@
 
 __author__ = "730703450"
 
-# add bin len
 
-from exercises.ex03.dictionary import invert, favorite_color, count
+from exercises.ex03.dictionary import invert, favorite_color, count, bin_len
 
-# change some maybe ish
+# change some maybe ish -- variable names and ish
 
 
 # edge case for invert
@@ -74,4 +73,18 @@ def test_count_same() -> None:
 
 
 # edge case for bin len
-# def test_bin_len
+def test_bin_len_empty() -> None:
+    """tests bin len function when list is empty"""
+    words: list[str] = []
+    assert bin_len(words) == {}
+
+
+# use cases for bin len
+def test_bin_len_diff() -> None:
+    """tests bin len when they are all different words"""
+    assert bin_len(["pit", "flats", "pot"]) == {3: {"pit", "pot"}, 5: {"flats"}}
+
+
+def test_bin_len_sae() -> None:
+    """tests bin len when all words are the same words"""
+    assert bin_len(["the", "the", "the"]) == {3: {"the"}}
